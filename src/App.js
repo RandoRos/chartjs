@@ -1,23 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import 'chartjs-plugin-streaming';
+import 'chartjs-plugin-datalabels';
+import 'chartjs-plugin-zoom';
+import * as moment from 'moment';
+
+import MyChart from './Chart';
+
+const preGenData = () => {
+  const data = [];
+  for (let i = 0; i < 100; i++) {
+    data.push(
+      {
+        x: moment().subtract(i, 'minute'),
+        y: Math.random()
+      }
+    );
+  }
+  return data;
+};
 
 function App() {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    setInterval(() => {
+      const newData = data;
+      newData.push({
+        x: Date.now(),
+        y: Math.random(),
+      });
+      setData(newData);
+    }, 2000)
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MyChart data={data}/>
     </div>
   );
 }
