@@ -36,3 +36,47 @@
     transform: rotate(360deg);
   }
 }
+
+.dropdown-show {
+  display: block;
+}
+
+.dropdown-hide {
+  display: none;
+}
+
+#legend li {
+  font-size: 12px;
+}
+
+.disable-legend {
+  text-decoration: line-through;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  font-size: 12px;
+  min-width: 160px;
+  background-color: rgba(170, 170, 170, 0.904);
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 6px 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(175, 175, 175);
+}
